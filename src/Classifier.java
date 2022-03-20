@@ -40,7 +40,7 @@ public class Classifier {
     }
 
 
-    public double showResult() {
+    public String showResult() {
 
         double correctAnswers = 0;
 
@@ -52,7 +52,7 @@ public class Classifier {
         }
 
 
-        return correctAnswers * 100 / testList.size();
+        return  "Dokładność algorytmu: " + correctAnswers * 100 / testList.size()+"%";
     }
 
 
