@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DataReader {
-    private List<Data> dataList;
+    private ArrayList<Data> dataList;
 
     public DataReader(String path) {
         dataList = new ArrayList<>();
@@ -18,7 +18,7 @@ public class DataReader {
             reader.readLine(); // skip first line
             while ((newLine = reader.readLine()) != null) {
                 String[] data = newLine.split(",");
-                String[] attr = Arrays.stream(data).filter(DataReader::isNumeric).collect(Collectors.toList()).toArray(String[]::new);
+                double[] attr = Arrays.stream(data).filter(DataReader::isNumeric).mapToDouble(Double::parseDouble).toArray();
                 dataList.add(new Data(data[data.length - 1], attr));
             }
 
@@ -27,10 +27,6 @@ public class DataReader {
         }
     }
 
-
-    public void print() {
-        dataList.forEach(System.out::println);
-    }
 
     public static boolean isNumeric(String str) {
         try {
@@ -41,8 +37,9 @@ public class DataReader {
         }
     }
 
-    public List<Data> getDataList(){
+    public List<Data> getDataList() {
         return this.dataList;
     }
+
 
 }

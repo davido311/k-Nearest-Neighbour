@@ -1,18 +1,18 @@
-
 import java.util.Arrays;
 
 public class Data {
 
-    private String[] attributes;
+    private double[] attributes;
     private String type;
+    private double distance;
 
-    public Data(String type, String[] attributes) {
+    public Data(String type, double[] attributes) {
         this.type = type;
         this.attributes = attributes;
     }
 
 
-    public String[] getAttributes() {
+    public double[] getAttributes() {
         return attributes;
     }
 
@@ -22,6 +22,14 @@ public class Data {
 
     public String toString() {
         return getType() + Arrays.toString(getAttributes());
+    }
+
+    public double getDistance() {
+        return this.distance;
+    }
+
+    public void setDistance(double newDistance) {
+        this.distance = newDistance;
     }
 
 
