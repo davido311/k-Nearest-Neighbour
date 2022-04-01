@@ -16,10 +16,12 @@ public class DataReader {
             String newLine;
             BufferedReader reader = new BufferedReader(new FileReader(path));
             reader.readLine(); // skip first line
+
             while ((newLine = reader.readLine()) != null) {
                 String[] data = newLine.split(",");
                 double[] attr = Arrays.stream(data).filter(DataReader::isNumeric).mapToDouble(Double::parseDouble).toArray();
                 dataList.add(new Data(data[data.length - 1], attr));
+
             }
 
         } catch (IOException e) {
@@ -40,6 +42,4 @@ public class DataReader {
     public List<Data> getDataList() {
         return this.dataList;
     }
-
-
 }

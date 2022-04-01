@@ -7,12 +7,10 @@ public class Classifier {
     private HashMap<String, Integer> hashMap;
 
     public Classifier(List<Data> testList, List<Data> trainList, int k) {
-
         this.trainList = trainList;
         this.testList = testList;
         this.k = k;
     }
-
 
     public String classify(Data data) {
         hashMap = new HashMap<>();
@@ -33,10 +31,7 @@ public class Classifier {
             else hashMap.put(sortedData.getType(), hashMap.get(sortedData.getType()) + 1);
 
         }
-
-
-        return Collections.max(hashMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
-
+         return Collections.max(hashMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 
 
@@ -46,13 +41,9 @@ public class Classifier {
 
         for (Data testData : testList) {
             if (testData.getType().trim().equals(classify(testData).trim())) correctAnswers++;
-
             System.out.println(testData.getType() + " " + Arrays.toString(testData.getAttributes()) + "predicted = " + classify(testData));
-
         }
-
-
-        return  "Dokładność algorytmu: " + correctAnswers * 100 / testList.size()+"%";
+        return "Dokładność algorytmu: " + correctAnswers * 100 / testList.size() + "%";
     }
 
 
